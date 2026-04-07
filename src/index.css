@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", sans-serif;
+
+  --color-primary: #005fae;
+  --color-primary-dim: #005399;
+  --color-primary-container: #d4e3ff;
+  --color-on-primary-container: #005298;
+  
+  --color-surface: #f7f9fc;
+  --color-surface-container-low: #f0f4f8;
+  --color-surface-container: #e8eff4;
+  --color-surface-container-high: #e1e9f0;
+  --color-surface-container-highest: #d9e4ec;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-on-surface: #29343a;
+  --color-on-surface-variant: #566168;
+  --color-outline: #717c84;
+  --color-outline-variant: #a8b3bb;
+  
+  --color-tertiary: #5c5d78;
+  --color-tertiary-container: #ddddfe;
+  --color-on-tertiary-container: #4d4e68;
+  
+  --color-error: #9f403d;
+  --color-error-container: #fe8983;
+
+  --radius-xl: 0.75rem;
+  --radius-lg: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+.bg-login-pattern {
+  background-color: #f7f9fc;
+  background-image: radial-gradient(#d9e4ec 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-outline-variant/30 rounded-full hover:bg-outline-variant/50 transition-colors;
+}
