@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   Filter, 
@@ -14,10 +14,15 @@ import {
   Lightbulb
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { ImportDrawer } from '../components/ImportDrawer';
 
 export const TaskManagementPage: React.FC = () => {
+  const [isImportOpen, setIsImportOpen] = useState(false);
+
   return (
     <section className="p-8 max-w-[1400px] mx-auto w-full">
+      <ImportDrawer isOpen={isImportOpen} onClose={() => setIsImportOpen(false)} />
+      
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
         <div className="space-y-2">
           <nav className="flex items-center gap-2 text-xs font-medium text-on-surface-variant tracking-wide">
@@ -31,7 +36,10 @@ export const TaskManagementPage: React.FC = () => {
           <button className="px-5 py-2.5 bg-surface-container-highest text-on-surface rounded-full font-semibold text-sm hover:bg-surface-container-high transition-all flex items-center gap-2">
             <Filter size={18} /> 筛选
           </button>
-          <button className="px-6 py-2.5 bg-gradient-to-br from-primary to-primary-dim text-white rounded-full font-bold text-sm shadow-lg hover:scale-[1.02] transition-transform flex items-center gap-2">
+          <button 
+            onClick={() => setIsImportOpen(true)}
+            className="px-6 py-2.5 bg-gradient-to-br from-primary to-primary-dim text-white rounded-full font-bold text-sm shadow-lg hover:scale-[1.02] transition-transform flex items-center gap-2"
+          >
             <Upload size={18} /> 导入
           </button>
         </div>
